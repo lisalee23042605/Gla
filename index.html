@@ -1,301 +1,237 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的导航页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>NexusHub | Essential Web Navigation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-image: url('http://files.unn.pp.ua/download/pictures%2Fbackground.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            margin: 0;
-            padding: 20px;
-            color: #333;
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
-        
-        .header {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
-        
-        .search-container {
-            padding: 3rem;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 20px;
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.2);
         }
-        
-        .search-box {
-            width: 100%;
-            padding: 15px 18px;
-            font-size: 20px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.7);
+        .category-pill {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
         }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
+        .search-container:focus-within {
+            box-shadow: 0 0 0 2px #38bdf8;
         }
-        
-        .link-item {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 12px;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        
-        .link-item:hover {
-            background-color: rgba(255, 255, 255, 0.85);
-            transform: translateY(-2px);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
         }
-        
-        .link-item a {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
         }
-        
-        .link-icon {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 8px;
-            object-fit: contain;
-        }
-        
-        .link-text {
-            font-size: 14px;
-            text-align: center;
-            word-break: break-word;
-            max-width: 100%;
-        }
-        .foot_marker {
-            position: fixed;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.8);
-            z-index: 999;
-            padding: 10px 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
-        }
-
-        .foot_marker a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
-
-        .foot_marker a:hover {
-            color: #4388e0;
-        }        
     </style>
 </head>
-<body>
-    <div class="search-container">
-        <form action="https://www.google.com/search" method="get" target="_blank">
-            <input class="search-box" type="text" name="q" placeholder="Google 搜索...">
-        </form>
-    </div>
-    
-    <div class="container">
-        <!-- 第一行 -->
-        <div class="link-item">
-            <a href="https://www.google.com" target="_blank">
-                <img class="link-icon" src="https://www.google.com/favicon.ico" alt="Google">
-                <span class="link-text">Google</span>
-            </a>
+<body class="min-h-screen pb-12">
+
+    <!-- Header & Search -->
+    <header class="sticky top-0 z-50 py-6 px-4 bg-[#0f172a]/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center">
+                    <i class="fas fa-compass text-2xl text-white"></i>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight">NexusHub</h1>
+            </div>
+            
+            <div class="relative w-full md:w-96 search-container rounded-xl transition-all">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <i class="fas fa-search text-slate-400"></i>
+                </span>
+                <input 
+                    type="text" 
+                    id="siteSearch"
+                    placeholder="Search your favorite sites..." 
+                    class="block w-full pl-10 pr-4 py-3 bg-slate-800 border-none rounded-xl text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-0"
+                >
+            </div>
         </div>
-        <div class="link-item">
-            <a href="https://www.baidu.com" target="_blank">
-                <img class="link-icon" src="https://www.baidu.com/favicon.ico" alt="Baidu">
-                <span class="link-text">Baidu</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.youtube.com" target="_blank">
-                <img class="link-icon" src="https://www.youtube.com/favicon.ico" alt="YouTube">
-                <span class="link-text">Youtube</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://mail.google.com/mail/u/0/" target="_blank">
-                <img class="link-icon" src="https://mail.google.com/favicon.ico" alt="Gmail">
-                <span class="link-text">Gmail</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://github.com" target="_blank">
-                <img class="link-icon" src="https://github.com/favicon.ico" alt="GitHub">
-                <span class="link-text">GitHub</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://ip.sb" target="_blank">
-                <img class="link-icon" src="https://ip.sb/favicon.ico" alt="IP SB">
-                <span class="link-text">ip.sb</span>
-            </a>
-        </div>
-        
-        <!-- 第二行 -->
-        <div class="link-item">
-            <a href="https://dash.cloudflare.com" target="_blank">
-                <img class="link-icon" src="https://www.cloudflare.com/favicon.ico" alt="Cloudflare">
-                <span class="link-text">Cloudflare</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://chat.openai.com" target="_blank">
-                <img class="link-icon" src="https://chat.openai.com/favicon.ico" alt="ChatGPT">
-                <span class="link-text">Chatgpt</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://huggingface.co" target="_blank">
-                <img class="link-icon" src="https://huggingface.co/favicon.ico" alt="Hugging Face">
-                <span class="link-text">Huggingface</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.itdog.cn" target="_blank">
-                <i class="fas fa-network-wired link-icon"></i>
-                <span class="link-text">ITDOG - 在线ping</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://ping0.cc" target="_blank">
-                <i class="fas fa-database link-icon"></i>
-                <span class="link-text">Ping0</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="#" target="_blank">
-                <i class="fas fa-fingerprint link-icon"></i>
-                <span class="link-text">浏览器指纹</span>
-            </a>
-        </div>
-        
-        <!-- 第三行 -->
-        <div class="link-item">
-            <a href="https://ssss.nyc.mn" target="_blank">
-                <i class="fas fa-tachometer-alt link-icon"></i>
-                <span class="link-text">nezha面板</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://hoppscotch.io" target="_blank">
-                <img class="link-icon" src="https://discord.com/favicon.ico" alt="Discord">
-                <span class="link-text">Api测试</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://who.cx" target="_blank">
-                <i class="fas fa-globe link-icon"></i>
-                <span class="link-text">who.cx</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.domcomp.com" target="_blank">
-                <i class="fas fa-tags link-icon"></i>
-                <span class="link-text">域名比价</span>
-            </a>
-        </div>
-        
-        <div class="link-item">
-            <a href="https://www.nodeseek.com" target="_blank">
-                <i class="fas fa-server link-icon"></i>
-                <span class="link-text">NodeSeek</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://linux.do" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">Linux do</span>
-            </a>
-        </div>
-        
-        <!-- 第四行 -->
-        <div class="link-item">
-            <a href="https://music.gvrander.eu.org" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">在线音乐</span>
-            </a>           
-        </div>
-        <div class="link-item">
-            <a href="https://www.freereceivesms.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">免费接码</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://sublink.eooce.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">订阅转换</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://ssh.eooce.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">webssh</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://filebox.nnuu.nyc.mn" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">文件快递柜</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://address.nnuu.nyc.mn" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">真实地址生成</span>
-            </a> 
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 mt-12">
+        <!-- Categories Section -->
+        <div id="navigationGrid" class="space-y-12">
+            
+            <!-- Search & Knowledge -->
+            <section class="category-group">
+                <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <i class="fas fa-brain text-sky-400"></i> Search & Knowledge
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <a href="https://www.google.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-google text-3xl text-blue-500"></i>
+                        <span class="text-sm font-medium">Google</span>
+                    </a>
+                    <a href="https://www.wikipedia.org" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-wikipedia-w text-3xl text-slate-200"></i>
+                        <span class="text-sm font-medium">Wikipedia</span>
+                    </a>
+                    <a href="https://www.bing.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-search text-3xl text-teal-500"></i>
+                        <span class="text-sm font-medium">Bing</span>
+                    </a>
+                    <a href="https://openai.com/chatgpt" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-robot text-3xl text-green-500"></i>
+                        <span class="text-sm font-medium">ChatGPT</span>
+                    </a>
+                    <a href="https://www.perplexity.ai" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-bolt text-3xl text-sky-300"></i>
+                        <span class="text-sm font-medium">Perplexity</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Social Media -->
+            <section class="category-group">
+                <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <i class="fas fa-users text-pink-400"></i> Social Media
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <a href="https://www.youtube.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-youtube text-3xl text-red-600"></i>
+                        <span class="text-sm font-medium">YouTube</span>
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-instagram text-3xl text-pink-500"></i>
+                        <span class="text-sm font-medium">Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-facebook text-3xl text-blue-600"></i>
+                        <span class="text-sm font-medium">Facebook</span>
+                    </a>
+                    <a href="https://www.twitter.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-x-twitter text-3xl text-slate-100"></i>
+                        <span class="text-sm font-medium">X (Twitter)</span>
+                    </a>
+                    <a href="https://www.reddit.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-reddit text-3xl text-orange-600"></i>
+                        <span class="text-sm font-medium">Reddit</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Productivity & Work -->
+            <section class="category-group">
+                <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <i class="fas fa-briefcase text-amber-400"></i> Productivity
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <a href="https://github.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-github text-3xl text-white"></i>
+                        <span class="text-sm font-medium">GitHub</span>
+                    </a>
+                    <a href="https://www.notion.so" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-sticky-note text-3xl text-slate-100"></i>
+                        <span class="text-sm font-medium">Notion</span>
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-linkedin text-3xl text-blue-700"></i>
+                        <span class="text-sm font-medium">LinkedIn</span>
+                    </a>
+                    <a href="https://www.canva.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-palette text-3xl text-purple-400"></i>
+                        <span class="text-sm font-medium">Canva</span>
+                    </a>
+                    <a href="https://slack.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-slack text-3xl text-orange-400"></i>
+                        <span class="text-sm font-medium">Slack</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Entertainment & News -->
+            <section class="category-group">
+                <h2 class="text-xl font-semibold mb-6 flex items-center gap-2">
+                    <i class="fas fa-tv text-purple-400"></i> Entertainment
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <a href="https://www.netflix.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-play-circle text-3xl text-red-600"></i>
+                        <span class="text-sm font-medium">Netflix</span>
+                    </a>
+                    <a href="https://www.spotify.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-spotify text-3xl text-green-500"></i>
+                        <span class="text-sm font-medium">Spotify</span>
+                    </a>
+                    <a href="https://www.twitch.tv" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-twitch text-3xl text-purple-600"></i>
+                        <span class="text-sm font-medium">Twitch</span>
+                    </a>
+                    <a href="https://www.bbc.com/news" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fas fa-newspaper text-3xl text-slate-100"></i>
+                        <span class="text-sm font-medium">BBC News</span>
+                    </a>
+                    <a href="https://www.amazon.com" target="_blank" class="glass-card p-4 rounded-2xl flex flex-col items-center text-center gap-3">
+                        <i class="fab fa-amazon text-3xl text-orange-500"></i>
+                        <span class="text-sm font-medium">Amazon</span>
+                    </a>
+                </div>
+            </section>
+
         </div>
 
-        <!-- 版权 -->
-        <div class="foot_marker">
-        <a href="https://github.com/eooce" target="_blank">Powered by eooce</a>
-    </div>
+        <div id="noResults" class="hidden flex flex-col items-center justify-center py-20 text-slate-400">
+            <i class="fas fa-search text-5xl mb-4 opacity-20"></i>
+            <p class="text-lg">No websites found matching your search.</p>
+        </div>
+    </main>
+
+    <footer class="mt-20 py-8 border-t border-slate-800 text-center text-slate-500 text-sm">
+        <p>&copy; 2025 NexusHub. Streamlined navigation for the modern web.</p>
+    </footer>
 
     <script>
-        document.querySelectorAll('.link-item:not(.empty)').forEach(item => {
-            const icon = item.querySelector('img.link-icon');
-            if (icon) {
-                icon.onerror = function() {
-                    this.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMnptMCAyYzQuNDE4IDAgOCAzLjU4MiA4IDhzLTMuNTgyIDgtOCA4LTgtMy41ODItOC04IDMuNTgyLTggOC04eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==';
-                }
-            }
+        // Real-time search functionality
+        const searchInput = document.getElementById('siteSearch');
+        const cards = document.querySelectorAll('.glass-card');
+        const groups = document.querySelectorAll('.category-group');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            let totalVisible = 0;
+
+            groups.forEach(group => {
+                const groupCards = group.querySelectorAll('.glass-card');
+                let groupVisible = 0;
+
+                groupCards.forEach(card => {
+                    const name = card.querySelector('span').textContent.toLowerCase();
+                    if (name.includes(term)) {
+                        card.style.display = 'flex';
+                        groupVisible++;
+                        totalVisible++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Hide category heading if no cards match
+                group.style.display = groupVisible > 0 ? 'block' : 'none';
+            });
+
+            // Toggle no results message
+            noResults.classList.toggle('hidden', totalVisible > 0 || term === '');
         });
     </script>
 </body>
